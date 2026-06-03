@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>提瓦特地球 · Teyvat Earth</title>
+  <link rel="preload" href="/fonts/HYWenHei-85W.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="scene"></canvas>
+
+    <!-- 顶部标题 -->
+    <header class="hud hud-top">
+      <div class="title">
+        <span class="title-cn">提瓦特地球</span>
+        <span class="title-en">TEYVAT&nbsp;EARTH</span>
+      </div>
+    </header>
+
+    <!-- 加载界面 -->
+    <div id="loader" class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-text">正在连接世界之树…</div>
+    </div>
+
+    <!-- 左侧图例 -->
+    <aside class="hud hud-legend">
+      <h3>锚点图例</h3>
+      <ul>
+        <li><span class="dot dot-statue"></span>七天神像 · 首都</li>
+        <li><span class="dot dot-waypoint"></span>传送锚点 · 大区</li>
+        <li><span class="dot dot-domain"></span>秘境 · 奇观</li>
+      </ul>
+      <div class="legend-tip">点击锚点开启传送</div>
+    </aside>
+
+    <!-- 右下控制面板 -->
+    <div class="hud hud-controls">
+      <button id="btn-style" class="ctrl-btn" title="切换贴图风格">
+        <span class="ctrl-ico">❖</span><span class="ctrl-label">风格：提瓦特</span>
+      </button>
+      <button id="btn-borders" class="ctrl-btn" title="国界显示">
+        <span class="ctrl-ico">▣</span><span class="ctrl-label">国界：开</span>
+      </button>
+      <button id="btn-spin" class="ctrl-btn" title="自动旋转">
+        <span class="ctrl-ico">↻</span><span class="ctrl-label">自转：开</span>
+      </button>
+    </div>
+
+    <!-- 底部提示 -->
+    <footer class="hud hud-hint">
+      拖拽旋转 · 滚轮缩放 · 点击锚点传送
+    </footer>
+
+    <!-- 悬浮 tooltip -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <!-- 传送详情卡片 -->
+    <div id="card" class="card">
+      <div class="card-frame">
+        <div class="card-emblem" id="card-emblem"></div>
+        <div class="card-kind" id="card-kind"></div>
+        <h2 id="card-title"></h2>
+        <p id="card-sub"></p>
+        <div class="card-coords" id="card-coords"></div>
+        <button id="card-warp" class="warp-btn">▶ 传送至此</button>
+        <button id="card-enter" class="warp-btn enter-btn">⊹ 进入当地</button>
+        <button id="card-close" class="card-close">✕</button>
+      </div>
+    </div>
+
+    <!-- 传送过场特效 -->
+    <div id="warp-fx" class="warp-fx"></div>
+
+    <!-- 本地场景（进入当地）：360° 全景 -->
+    <div id="locale" class="locale">
+      <canvas id="locale-canvas"></canvas>
+      <div class="locale-vignette"></div>
+      <div class="locale-info">
+        <div class="locale-kind" id="locale-kind"></div>
+        <h1 id="locale-title"></h1>
+        <div class="locale-tags" id="locale-tags"></div>
+        <p class="locale-flavor" id="locale-flavor"></p>
+        <div class="locale-coords" id="locale-coords"></div>
+      </div>
+      <div class="locale-hint" id="locale-hint">拖拽环视 · 滚轮缩放</div>
+      <button id="locale-back" class="locale-back">← 返回星空</button>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
